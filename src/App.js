@@ -9,9 +9,10 @@
 import React,{useState,useEffect} from 'react';
 import {SafeAreaView,FlatList,StyleSheet,View,Text,TextInput,Image} from 'react-native';
 import Header from './components/Header';
+import datalar from './Datalar';
 
 const App = () => {
- 
+    
   const [filterData,setFilterData]=useState([]);
   const [masterData,setMasterData]=useState([]);
   const [search,setSearch]=useState('');
@@ -65,7 +66,7 @@ const App = () => {
             <TextInput style={styles.textInputStyle}/>
 
           <FlatList
-          data={filterData}
+          data={datalar}
           keyExtractor={(item,index)=>index.toString()}
           ItemSeparatorComponent={ItemSeparatorView}
           renderItem={ItemView}
