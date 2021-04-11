@@ -7,7 +7,7 @@
  */
 
 import React,{useState,useEffect} from 'react';
-import {SafeAreaView,FlatList,StyleSheet,View,Text,TextInput} from 'react-native';
+import {SafeAreaView,FlatList,StyleSheet,View,Text,TextInput,Image} from 'react-native';
 import Header from './components/Header';
 
 const App = () => {
@@ -60,7 +60,10 @@ const App = () => {
       <SafeAreaView style={{flex:1}}>
           <Header/>
           <View style={styles.container}>
+
+         
             <TextInput style={styles.textInputStyle}/>
+
           <FlatList
           data={filterData}
           keyExtractor={(item,index)=>index.toString()}
@@ -75,6 +78,8 @@ const App = () => {
 const styles = StyleSheet.create({
   container:{
       backgroundColor:'white',
+      display:'flex',
+     
   },
   itemStyle:{
       padding:15
