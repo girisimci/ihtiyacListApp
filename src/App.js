@@ -36,6 +36,22 @@ const App = () => {
       })
   }
 
+  const searchFilter = (text) => {
+      if(text){
+          const newData = masterData.filter((item)=>{
+              const itemData = item.title ? item.title.toUpperCase()
+              : ''.toUpperCase();
+              const textData = text.toUpperCase();
+              return itemData.indexOf(textData)>-1;
+          });
+          setFilterData(newData);
+          setSearch(text);
+      } else {
+          setFilterData(masterData);
+          setSearch(text);
+      }
+  }
+
 
   const ItemView=({item})=>{
       return(
@@ -63,10 +79,17 @@ const App = () => {
           <View style={styles.container}>
 
          
-            <TextInput style={styles.textInputStyle}/>
+            <TextInput 
+            style={styles.textInputStyle}
+            value={search}
+            placeholder={"Arama Yap.."}
+            underlineColorAndroid="transparent"
+            onChangeText={(text)=>searchFilter(text)}
+            
+            />
 
           <FlatList
-          data={datalar}
+          data={datalar}//filterData apiden gelen değer
           keyExtractor={(item,index)=>index.toString()}
           ItemSeparatorComponent={ItemSeparatorView}
           renderItem={ItemView}
