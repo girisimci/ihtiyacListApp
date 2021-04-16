@@ -7,47 +7,27 @@
  */
 
 import React,{useState,useEffect} from 'react';
-import {SafeAreaView,FlatList,StyleSheet,View,Text,TextInput,Image} from 'react-native';
+import {SafeAreaView,FlatList,StyleSheet,View,Text,TextInput,Image,TouchableOpacity} from 'react-native';
 import Header from './components/Header';
 import datalar from './Datalar';
 
 const App = () => {
     
-  const [filterData,setFilterData]=useState([]);
-  const [masterData,setMasterData]=useState([]);
+  const [data,setData]=useState(datalar);
+  const [filteredData,setFilteredData]=useState(data);
   const [search,setSearch]=useState('');
-
-  useEffect(()=>{
-      fetchPosts();
-      return()=>{
-
-      }
-  },[])
-
-  const fetchPosts = () => {
-      const apiURL='https://jsonplaceholder.typicode.com/posts';
-      fetch(apiURL)
-      .then((response)=>response.json())
-      .then((responseJson)=>{
-          setFilterData(responseJson);
-          setMasterData(responseJson);
-      }).catch((error)=>{
-          console.error(error);
-      })
-  }
 
   const searchFilter = (text) => {
       if(text){
-          const newData = masterData.filter((item)=>{
-              const itemData = item.title ? item.title.toUpperCase()
-              : ''.toUpperCase();
-              const textData = text.toUpperCase();
-              return itemData.indexOf(textData)>-1;
-          });
-          setFilterData(newData);
+
+         let _data = filteredData.filter((x)=> x.title.toLowerCase().includes(text.toLowerCase()));
+         _data.map(i => console.log(i.title));
+         console.log(_data);
           setSearch(text);
+          setFilteredData(_data)
+
       } else {
-          setFilterData(masterData);
+            setFilteredData(datalar);
           setSearch(text);
       }
   }
@@ -55,9 +35,12 @@ const App = () => {
 
   const ItemView=({item})=>{
       return(
-          <Text style={styles.itemStyle}>
+          <TouchableOpacity onPress={()=>{console.log(item.body);}}>
+
+<Text style={styles.itemStyle}>
               {item.id}{'. '}{item.title.toUpperCase()}
           </Text>
+          </TouchableOpacity>
       )
   }
 
@@ -87,9 +70,8 @@ const App = () => {
             onChangeText={(text)=>searchFilter(text)}
             
             />
-
           <FlatList
-          data={datalar}//filterData apiden gelen değer
+          data={filteredData}//filterData apiden gelen değer
           keyExtractor={(item,index)=>index.toString()}
           ItemSeparatorComponent={ItemSeparatorView}
           renderItem={ItemView}
