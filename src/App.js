@@ -10,6 +10,7 @@ import React,{useState,useEffect} from 'react';
 import {SafeAreaView,FlatList,StyleSheet,View,Text,TextInput,Image,TouchableOpacity} from 'react-native';
 import Header from './components/Header';
 import datalar from './Datalar';
+import Detay from './pages/Detay';
 
 const App = () => {
     
@@ -35,7 +36,7 @@ const App = () => {
 
   const ItemView=({item})=>{
       return(
-          <TouchableOpacity onPress={()=>{console.log(item.body);}}>
+          <TouchableOpacity onPress={()=>{Detay(item.body);}}>
 
 <Text style={styles.itemStyle}>
               {item.id}{'. '}{item.title.toUpperCase()}

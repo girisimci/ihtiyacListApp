@@ -31,49 +31,48 @@ const datalar=([
       "title":"Frontend Yazılım Öğrenme İhtiyacı",
       "body":"javascript, css, html"
        },
-   /* {
+    {
       "userId":1,
       "id":6,
-      "title":"",
+      "title":"Devlette İş Bulma İhtiyaçları",
       "body":""
        },
     {
       "userId":1,
       "id":7,
-      "title":"",
-      "body":""
+      "title":"Köpek Bakımı",
+      "body":"köpek maması"
        },
     {
       "userId":1,
       "id":8,
-      "title":"",
-      "body":""
+      "title":"kedi bakımmı",
+      "body":"kedi maması"
        },
     {
       "userId":1,
       "id":9,
-      "title":"",
-      "body":""
+      "title":"kuş bakımı",
+      "body":"kuş maması"
        },
     {
       "userId":1,
       "id":10,
-      "title":"",
-      "body":""
+      "title":"çiçek bakımı",
+      "body":"çiçek ilacı"
        },
     {
       "userId":1,
       "id":11,
-      "title":"",
-      "body":""
+      "title":"hamster bakımı",
+      "body":"hamster yemi"
        },
     {
       "userId":1,
       "id":12,
-      "title":"",
-      "body":""
-       },*/
-  
+      "title":"balık bakımı",
+      "body":"balık yemi,ilacı"
+       },
 
 ])
 
